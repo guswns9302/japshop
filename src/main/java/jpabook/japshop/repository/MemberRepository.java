@@ -1,6 +1,8 @@
 package jpabook.japshop.repository;
 
 import jpabook.japshop.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -8,11 +10,16 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
+    /*
     // 엔티티 매니저 주입
-    @PersistenceContext
+    @PersistenceContext // -> 스프링 부트에서는 이 어노테이션을 @Autowired로 사용하게 해줌
     private EntityManager em;
+    // 따라서 롬복을 적용시켜 RequiredArgsContructor을 사용하면 코드를 간결하고 통일성 있게 할 수 있음
+     */
+    private final EntityManager em;
 
     // 멤버 저장
     public void save(Member member){
